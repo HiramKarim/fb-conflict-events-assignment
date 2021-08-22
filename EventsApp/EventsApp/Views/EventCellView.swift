@@ -12,7 +12,7 @@ class EventCellView: UICollectionViewCell {
     private let eventName:UILabel = {
        let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .blue
+        label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -20,7 +20,7 @@ class EventCellView: UICollectionViewCell {
     
     private let eventStartDate:UILabel = {
        let label = UILabel()
-        label.textColor = .blue
+        label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -28,7 +28,7 @@ class EventCellView: UICollectionViewCell {
     
     private let eventEndDate:UILabel = {
        let label = UILabel()
-        label.textColor = .blue
+        label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -38,7 +38,7 @@ class EventCellView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.contentView.backgroundColor = .red
+        self.contentView.backgroundColor = .white
         
         addViews()
     }

@@ -17,7 +17,7 @@ class EventsListVC:UIViewController {
         flowLayout.scrollDirection = .vertical
         
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
-        collection.backgroundColor = .cyan
+        collection.backgroundColor = .lightGray
         collection.translatesAutoresizingMaskIntoConstraints = false
         
         return collection

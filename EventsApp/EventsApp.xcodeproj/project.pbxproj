@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0E6FE026D2F9B900CE9AB3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E6FDF26D2F9B900CE9AB3 /* Extensions.swift */; };
 		82E8043626D1D0C0004E97F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E8043526D1D0C0004E97F5 /* AppDelegate.swift */; };
 		82E8043826D1D0C0004E97F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E8043726D1D0C0004E97F5 /* SceneDelegate.swift */; };
 		82E8043F26D1D0CB004E97F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E8043E26D1D0CB004E97F5 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F0E6FDF26D2F9B900CE9AB3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		82E8043226D1D0C0004E97F5 /* EventsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E8043526D1D0C0004E97F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E8043726D1D0C0004E97F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0E6FDE26D2F9A000CE9AB3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F0E6FDF26D2F9B900CE9AB3 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		82E8042926D1D0C0004E97F5 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 		82E8043426D1D0C0004E97F5 /* EventsApp */ = {
 			isa = PBXGroup;
 			children = (
+				1F0E6FDE26D2F9A000CE9AB3 /* Extensions */,
 				82E8048B26D1D7CC004E97F5 /* Model */,
 				82E8047626D1D356004E97F5 /* Data */,
 				82E8047526D1D16F004E97F5 /* Controller */,
@@ -321,6 +332,7 @@
 				82E8048726D1D4F9004E97F5 /* HelperManager.swift in Sources */,
 				82E8049226D1EF91004E97F5 /* EventCellView.swift in Sources */,
 				82E8047D26D1D48F004E97F5 /* EventsListVC.swift in Sources */,
+				1F0E6FE026D2F9B900CE9AB3 /* Extensions.swift in Sources */,
 				82E8048226D1D4CF004E97F5 /* EventsListVM.swift in Sources */,
 				82E8043626D1D0C0004E97F5 /* AppDelegate.swift in Sources */,
 				82E8048D26D1D982004E97F5 /* EventModel.swift in Sources */,
