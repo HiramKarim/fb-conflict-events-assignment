@@ -14,7 +14,7 @@ class EventsListVC:UIViewController {
     private var collectionView:UICollectionView = {
         
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
+        flowLayout.scrollDirection = .vertical
         
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         collection.backgroundColor = .cyan
@@ -45,6 +45,7 @@ class EventsListVC:UIViewController {
         
         collectionView.register(EventCellView.self, forCellWithReuseIdentifier: "eventCell")
         collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.reloadData()
     }
     
@@ -60,7 +61,7 @@ extension EventsListVC: UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath) as? EventCellView else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as? EventCellView else {
             return UICollectionViewCell()
         }
         
@@ -71,7 +72,11 @@ extension EventsListVC: UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width * 90, height: 50)
+        return CGSize(width: UIScreen.main.bounds.width * 0.90, height: 150)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        }
     
 }

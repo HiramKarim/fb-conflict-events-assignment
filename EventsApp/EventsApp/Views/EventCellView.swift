@@ -11,6 +11,8 @@ class EventCellView: UICollectionViewCell {
     
     private let eventName:UILabel = {
        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .blue
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -18,6 +20,7 @@ class EventCellView: UICollectionViewCell {
     
     private let eventStartDate:UILabel = {
        let label = UILabel()
+        label.textColor = .blue
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -25,6 +28,7 @@ class EventCellView: UICollectionViewCell {
     
     private let eventEndDate:UILabel = {
        let label = UILabel()
+        label.textColor = .blue
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -61,7 +65,7 @@ class EventCellView: UICollectionViewCell {
             eventName.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
             eventName.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
             
-            eventStartDate.topAnchor.constraint(equalTo: eventName.bottomAnchor, constant: 10),
+            eventStartDate.topAnchor.constraint(equalTo: eventName.bottomAnchor, constant: 20),
             eventStartDate.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
             
             eventEndDate.topAnchor.constraint(equalTo: eventStartDate.bottomAnchor, constant: 10),
@@ -72,8 +76,8 @@ class EventCellView: UICollectionViewCell {
     func configCell(vm:EventsListMV, position:Int) {
         DispatchQueue.main.async {
             self.eventName.text = vm.getEventAt(position: position)?.eventTitle ?? ""
-            self.eventStartDate.text = vm.getEventAt(position: position)?.eventStartDate ?? ""
-            self.eventEndDate.text = vm.getEventAt(position: position)?.eventEndDate ?? ""
+            self.eventStartDate.text = "start: ".appending(vm.getEventAt(position: position)?.eventStartDate ?? "")
+            self.eventEndDate.text = "end: ".appending(vm.getEventAt(position: position)?.eventEndDate ?? "")
         }
     }
     
