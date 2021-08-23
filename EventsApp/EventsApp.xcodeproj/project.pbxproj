@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F0E6FE026D2F9B900CE9AB3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E6FDF26D2F9B900CE9AB3 /* Extensions.swift */; };
+		1F0E6FE226D327CD00CE9AB3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E6FE126D327CD00CE9AB3 /* SectionHeaderView.swift */; };
 		82E8043626D1D0C0004E97F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E8043526D1D0C0004E97F5 /* AppDelegate.swift */; };
 		82E8043826D1D0C0004E97F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E8043726D1D0C0004E97F5 /* SceneDelegate.swift */; };
 		82E8043F26D1D0CB004E97F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E8043E26D1D0CB004E97F5 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		1F0E6FDF26D2F9B900CE9AB3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1F0E6FE126D327CD00CE9AB3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		82E8043226D1D0C0004E97F5 /* EventsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E8043526D1D0C0004E97F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E8043726D1D0C0004E97F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				82E8049126D1EF91004E97F5 /* EventCellView.swift */,
+				1F0E6FE126D327CD00CE9AB3 /* SectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				82E8049226D1EF91004E97F5 /* EventCellView.swift in Sources */,
 				82E8047D26D1D48F004E97F5 /* EventsListVC.swift in Sources */,
 				1F0E6FE026D2F9B900CE9AB3 /* Extensions.swift in Sources */,
+				1F0E6FE226D327CD00CE9AB3 /* SectionHeaderView.swift in Sources */,
 				82E8048226D1D4CF004E97F5 /* EventsListVM.swift in Sources */,
 				82E8043626D1D0C0004E97F5 /* AppDelegate.swift in Sources */,
 				82E8048D26D1D982004E97F5 /* EventModel.swift in Sources */,

@@ -44,6 +44,7 @@ class EventsListVC:UIViewController {
         ])
         
         collectionView.register(EventCellView.self, forCellWithReuseIdentifier: "eventCell")
+        collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
@@ -54,6 +55,11 @@ class EventsListVC:UIViewController {
 extension EventsListVC: UICollectionViewDataSource,
                         UICollectionViewDelegateFlowLayout,
                         UICollectionViewDelegate {
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return vm.getEventsCount()
@@ -71,12 +77,28 @@ extension EventsListVC: UICollectionViewDataSource,
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,withReuseIdentifier: "headerCell", for: indexPath) as? SectionHeaderView
+            headerView?.setTitle(title: "Hello c:")
+            return headerView ?? UICollectionReusableView()
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width * 0.90, height: 150)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height:50)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-        }
+        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    }
     
 }
