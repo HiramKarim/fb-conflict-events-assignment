@@ -16,8 +16,13 @@ class EventsListMV {
     
     init() {
         eventsArray = helper.loadJson(fileName: "mock")
-        eventsArray = eventsArray?.sorted(by:{$0.eventStartDate.toDate()?.compare($1.eventStartDate.toDate() ?? Date()) == .orderedAscending})
-        
+        eventsArray = eventsArray?.sorted(by:{$0.eventStartDate.toDate()?.compare($1.eventStartDate.toDate() ?? Date()) == .orderedAscending}) /// Complexity: O(n log n)
+        groupEvents(eventsArray: eventsArray)
+    }
+    
+    /// This method groups the events by date
+    /// Input: an array of event's model
+    private func groupEvents(eventsArray:[EventModel]?) {
         for event in eventsArray ?? [] {
             let stringInfo = event.eventStartDate.components(separatedBy: ",")
             let headerTitle = stringInfo[0]
@@ -31,7 +36,12 @@ class EventsListMV {
                 dateGroup[headerTitle] = [event]
             }
         }
-        
+    }
+    
+    func doEventsOverlap(_ eventOne: EventModel, _ eventTwo: EventModel) -> Bool {
+        let leftRange = eventOne.eventStartDate.toDate()! ... eventOne.eventEndDate.toDate()!
+        let rightRange = eventTwo.eventStartDate.toDate()! ... eventTwo.eventEndDate.toDate()!
+        return leftRange.overlaps(rightRange)
     }
     
     func getSectionsCount() -> Int {
