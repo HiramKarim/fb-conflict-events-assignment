@@ -73,11 +73,11 @@ class EventCellView: UICollectionViewCell {
         ])
     }
     
-    func configCell(vm:EventsListMV, position:Int) {
+    func configCell(event:EventModel?) {
         DispatchQueue.main.async {
-            self.eventName.text = vm.getEventAt(position: position)?.eventTitle ?? ""
-            self.eventStartDate.text = "start: ".appending(vm.getEventAt(position: position)?.eventStartDate ?? "")
-            self.eventEndDate.text = "end: ".appending(vm.getEventAt(position: position)?.eventEndDate ?? "")
+            self.eventName.text = event?.eventTitle ?? ""
+            self.eventStartDate.text = "start: ".appending(event?.eventStartDate ?? "")
+            self.eventEndDate.text = "end: ".appending(event?.eventEndDate ?? "")
         }
     }
     

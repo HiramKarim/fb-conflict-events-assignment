@@ -11,19 +11,46 @@ class EventsListMV {
     
     private var eventsArray:[EventModel]?
     private let helper = HelperManager()
-    var convertedArray: [Date] = []
+    private var dateGroup = [String:[EventModel]]()
+    private var titlesArray = [String]()
     
     init() {
         eventsArray = helper.loadJson(fileName: "mock")
         eventsArray = eventsArray?.sorted(by:{$0.eventStartDate.toDate()?.compare($1.eventStartDate.toDate() ?? Date()) == .orderedAscending})
+        
+        for event in eventsArray ?? [] {
+            let stringInfo = event.eventStartDate.components(separatedBy: ",")
+            let headerTitle = stringInfo[0]
+            
+            if dateGroup.keys.contains(headerTitle) {
+                var eventsElements = dateGroup[headerTitle]
+                eventsElements?.append(event)
+                dateGroup[headerTitle] = eventsElements
+            } else {
+                titlesArray.append(headerTitle)
+                dateGroup[headerTitle] = [event]
+            }
+        }
+        
     }
     
-    func getEventsCount() -> Int {
-        return eventsArray?.count ?? 0
+    func getSectionsCount() -> Int {
+        return dateGroup.count
     }
     
-    func getEventAt(position:Int) -> EventModel? {
-        return eventsArray?[position]
+    func getTitleForSection(section:Int) -> String {
+        return titlesArray[section]
+    }
+    
+    func getElementsCountForSection(section:Int) -> Int {
+        let title = getTitleForSection(section: section)
+        return dateGroup[title]?.count ?? 0
+    }
+    
+    func getEvent(section:Int, index:Int) -> EventModel? {
+        let title = getTitleForSection(section: section)
+        let eventsCollection = dateGroup[title]
+        return eventsCollection?[index]
     }
     
 }
