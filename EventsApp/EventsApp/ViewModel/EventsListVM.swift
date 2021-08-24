@@ -24,6 +24,7 @@ class EventsListMV {
     
     /// This method groups the events by date
     /// Input: an array of event's model
+    /// Complex: O(n^2), due that we are iterating over the dictionary if contains a specific key
     private func groupEvents(eventsArray:[EventModel]?) {
         for event in eventsArray ?? [] {
             let stringInfo = event.eventStartDate.components(separatedBy: ",")
@@ -40,6 +41,12 @@ class EventsListMV {
         }
     }
     
+    
+    ///This method creates a dictionary with the events that are overlaping. We need to iterate over the grouped dictionary
+    ///created before to start looping through each event category in dictionary. Is not the best solution due we are using two loops
+    ///to iteare over the events collection for each section.
+    ///INPUTS: group dictionary of dates model
+    ///Complex: O(n^2)
     private func findEventsOverlaps(dateGroup : [String:[EventModel]]) {
         
         for key in dateGroup.keys.enumerated() {
@@ -66,6 +73,8 @@ class EventsListMV {
         
     }
     
+    ///Returns a bool as a result of comparing one event to another using overlaps - closed range functionality
+    ///Using this, we are simplifying the use or nested if-else if validations
     private func doEventsOverlap(_ eventOne: EventModel, _ eventTwo: EventModel) -> Bool {
         let leftRange = eventOne.eventStartDate.toDate()! ... eventOne.eventEndDate.toDate()!
         let rightRange = eventTwo.eventStartDate.toDate()! ... eventTwo.eventEndDate.toDate()!
