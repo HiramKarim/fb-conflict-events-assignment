@@ -71,7 +71,8 @@ extension EventsListVC: UICollectionViewDataSource,
             return UICollectionViewCell()
         }
         
-        cell.configCell(event: vm.getEvent(section: indexPath.section, index: indexPath.row))
+        cell.configCell(event: vm.getEvent(section: indexPath.section, index: indexPath.row),
+                        hasConflict: vm.getConflictEvent(eventName: vm.getEvent(section: indexPath.section, index: indexPath.row)?.eventTitle ?? ""))
         
         return cell
         

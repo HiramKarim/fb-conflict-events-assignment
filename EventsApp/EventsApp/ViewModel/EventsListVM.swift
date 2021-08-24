@@ -13,11 +13,13 @@ class EventsListMV {
     private let helper = HelperManager()
     private var dateGroup = [String:[EventModel]]()
     private var titlesArray = [String]()
+    private var conflictEvent = [String:Bool]()
     
     init() {
         eventsArray = helper.loadJson(fileName: "mock")
         eventsArray = eventsArray?.sorted(by:{$0.eventStartDate.toDate()?.compare($1.eventStartDate.toDate() ?? Date()) == .orderedAscending}) /// Complexity: O(n log n)
         groupEvents(eventsArray: eventsArray)
+        findEventsOverlaps(dateGroup: dateGroup)
     }
     
     /// This method groups the events by date
@@ -38,7 +40,33 @@ class EventsListMV {
         }
     }
     
-    func doEventsOverlap(_ eventOne: EventModel, _ eventTwo: EventModel) -> Bool {
+    private func findEventsOverlaps(dateGroup : [String:[EventModel]]) {
+        
+        for key in dateGroup.keys.enumerated() {
+            
+            let elements = dateGroup[key.element]
+            
+            for index in (0...(elements?.count ?? 0) - 1) {
+                
+                if index == ((elements?.count ?? 0) - 1) {
+                    continue
+                } else {
+                    let event1 = elements?[index]
+                    let event2 = elements?[index + 1]
+                    
+                    if doEventsOverlap(event1!, event2!) {
+                        conflictEvent[(event1?.eventTitle ?? "")] = true
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    private func doEventsOverlap(_ eventOne: EventModel, _ eventTwo: EventModel) -> Bool {
         let leftRange = eventOne.eventStartDate.toDate()! ... eventOne.eventEndDate.toDate()!
         let rightRange = eventTwo.eventStartDate.toDate()! ... eventTwo.eventEndDate.toDate()!
         return leftRange.overlaps(rightRange)
@@ -61,6 +89,10 @@ class EventsListMV {
         let title = getTitleForSection(section: section)
         let eventsCollection = dateGroup[title]
         return eventsCollection?[index]
+    }
+    
+    func getConflictEvent(eventName:String) -> Bool {
+        return conflictEvent[eventName] ?? false
     }
     
 }

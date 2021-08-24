@@ -54,6 +54,7 @@ class EventCellView: UICollectionViewCell {
         eventName.text = ""
         eventStartDate.text = ""
         eventEndDate.text = ""
+        self.contentView.backgroundColor = .white
     }
     
     private func addViews() {
@@ -73,11 +74,16 @@ class EventCellView: UICollectionViewCell {
         ])
     }
     
-    func configCell(event:EventModel?) {
+    func configCell(event:EventModel?, hasConflict:Bool) {
         DispatchQueue.main.async {
             self.eventName.text = event?.eventTitle ?? ""
             self.eventStartDate.text = "start: ".appending(event?.eventStartDate ?? "")
             self.eventEndDate.text = "end: ".appending(event?.eventEndDate ?? "")
+            
+            if hasConflict {
+                self.contentView.backgroundColor = .yellow
+            }
+            
         }
     }
     
